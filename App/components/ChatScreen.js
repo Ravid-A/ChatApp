@@ -14,6 +14,8 @@ const ChatScreen = ({ route, navigation }) => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    navigation.getParent().setOptions({ title: `Chat (${username})` });
+
     socket.emit("username", username);
 
     socket.on("user_state_change", (message) => {
